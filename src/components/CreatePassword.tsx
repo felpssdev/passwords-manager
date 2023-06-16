@@ -94,7 +94,7 @@ function CreatePassword(): ReactElement {
         </div>
         <input
           onClick={handleSavePassword}
-          className="bg-indigo-500 w-3/5 ml-16 py-2 rounded-xl text-white font-bold hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          className="bg-indigo-500 w-3/5 ml-16 py-2 rounded-xl text-white font-bold hover:text-black hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
           type="submit"
           value="Save"
         />

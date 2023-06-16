@@ -25,9 +25,8 @@ function Passwords() {
             ml-4
             pb-3 border-b-2
             border-slate-200
-            text-xl
-            font-bold
-            mt-2"
+            text-3xl
+            font-bold"
       >
         Senhas salvas
       </h2>

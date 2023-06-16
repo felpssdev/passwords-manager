@@ -1,5 +1,5 @@
 'use client'
-import { createContext, useContext, Dispatch, SetStateAction, useState } from "react"
+import { createContext, useContext, Dispatch, SetStateAction, useState, ReactNode } from "react"
 
 export type DataType = {
   site: string;
@@ -29,7 +29,11 @@ const passwordsContext = createContext<ContextProps>({
   }),
 })
 
-export const PasswordContextProvider = ({ children }) => {
+interface PasswordContextProviderProps {
+  children: ReactNode
+}
+
+export const PasswordContextProvider = ({ children }: PasswordContextProviderProps) => {
   const [passwords, setPasswords] = useState<[] | DataType[]>([])
   const [isEditing, setIsEditing] = useState({
     site: '',
