@@ -133,7 +133,7 @@ function CreatePassword(): ReactElement {
             !inputValue.password
           }
           onClick={handleSavePassword}
-          className="dark:bg-red-600 cursor-pointer bg-indigo-400 dark:text-white dark:hover:bg-gradient-to-r dark:hover:from-red-600 dark:hover:via-red-500 dark:hover:to-red-400 dark:hover:text-white w-44 py-2 rounded-xl ml-24 mt-8 text-black font-bold hover:text-white hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          className="dark:bg-red-600 cursor-pointer bg-indigo-400 dark:text-white dark:hover:bg-gradient-to-r dark:hover:from-red-600 dark:hover:via-red-500 dark:hover:to-red-400 dark:hover:text-black w-44 py-2 rounded-xl ml-24 mt-8 text-black font-bold hover:text-white hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
           type="submit"
           value="Salvar"
         />
