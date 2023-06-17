@@ -17,12 +17,12 @@ function ThemeSwitcher() {
     <div>
       {theme === "dark"
       ? (
-        <div className='absolute right-20 top-14'>
+        <div className='absolute right-20 top-14 cursor-pointer'>
           <Moon className='w-12 h-12' onClick={() => setTheme('light')} />
         </div>
       )
       : (
-        <div className='absolute right-20 top-14'>
+        <div className='absolute right-20 top-14 cursor-pointer'>
           <Sun className='w-12 h-12' onClick={() => setTheme('dark')} />
         </div>
       )
