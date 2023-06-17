@@ -33,7 +33,7 @@ function Passwords() {
       <main className="flex flex-wrap">
         {currentPasswords &&
           currentPasswords.map((password) => (
-            <PasswordCard password={password} />
+            <PasswordCard key={password.id} password={password} />
           ))}
       </main>
     </div>

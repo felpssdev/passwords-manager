@@ -9,6 +9,8 @@ interface IPasswordCard {
   password: string
 }
 
+const charsReg = /[0-9a-zA-Z!@#$%^&*()_+=\-[\]{}|\\:;"'<>,.?/~`]/g
+
 function PasswordCard({
   password: { site, login, password, id },
 }: {
@@ -25,12 +27,7 @@ function PasswordCard({
   useEffect(() => {
     showPassword
       ? setFilteredPassword(password)
-      : setFilteredPassword(
-        filteredPassword.replace(
-          /[0-9a-zA-Z!@#$%^&*()_+=\-[\]{}|\\:;"'<>,.?/~`]/g,
-          '*',
-        ),
-      )
+      : setFilteredPassword(filteredPassword.replace(charsReg, '*'))
   }, [showPassword])
 
   const handleEditPassword = (

@@ -1,15 +1,9 @@
 'use client'
 import { usePasswordContext } from '@/app/context/passwordsContext'
-import React, { FormEvent, ReactElement, useEffect, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 
 function CreatePassword(): ReactElement {
   const { setPasswords, isEditing, setIsEditing } = usePasswordContext()
-
-  useEffect(() => {
-    if (isEditing.site !== '') {
-      setInputValue(isEditing)
-    }
-  }, [isEditing])
 
   const [inputValue, setInputValue] = useState({
     id: '',
@@ -17,6 +11,12 @@ function CreatePassword(): ReactElement {
     password: '',
     site: '',
   })
+
+  useEffect(() => {
+    if (isEditing.site !== '') {
+      setInputValue(isEditing)
+    }
+  }, [isEditing])
 
   interface ITarget {
     name: string
@@ -30,9 +30,7 @@ function CreatePassword(): ReactElement {
     })
   }
 
-  const handleSavePassword = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-
+  const handleSavePassword = () => {
     const getPasswords = JSON.parse(localStorage.getItem('password')) || []
     getPasswords.push(inputValue)
 
@@ -107,7 +105,7 @@ function CreatePassword(): ReactElement {
         </div>
         <div className="border-b-2 border-slate-200 mx-8">
           <label className="dark:text-slate-200 text-slate-500 text-base font-bold">
-            Password
+            Senha
           </label>
           <input
             onChange={handleChange}
@@ -126,9 +124,9 @@ function CreatePassword(): ReactElement {
             !inputValue.password
           }
           onClick={handleSavePassword}
-          className="dark:bg-red-600 bg-indigo-500 dark:text-white dark:hover:bg-gradient-to-r dark:hover:from-red-600 dark:hover:via-red-500 dark:hover:to-red-400 dark:hover:text-white w-44 py-2 rounded-xl ml-24 mt-8 text-white font-bold hover:text-black hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          className="dark:bg-red-600 cursor-pointer bg-indigo-400 dark:text-white dark:hover:bg-gradient-to-r dark:hover:from-red-600 dark:hover:via-red-500 dark:hover:to-red-400 dark:hover:text-white w-44 py-2 rounded-xl ml-24 mt-8 text-black font-bold hover:text-white hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
           type="submit"
-          value="Save"
+          value="Salvar"
         />
       </form>
     </div>
