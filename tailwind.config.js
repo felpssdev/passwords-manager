@@ -27,6 +27,8 @@ module.exports = {
           'linear-gradient(to right, #6366f1, #7c3aed, #a855f7, #d946ef, #f472b6, #d946ef, #a855f7, #7c3aed, #6366f1)',
         'dark-gradient':
           'linear-gradient(to right, #b91c1c, #d61e1e, #ef4444, #f87171, #fca5a5, #f87171, #ef4444, #d61e1e, #b91c1c)',
+        'background-dark-gradient':
+          'linear-gradient(to bottom, #061119, #0a1822, #0d1e2a, #111f31, #14233a)',
       },
       colors: {
         purpleDark: '#8A4D76',
