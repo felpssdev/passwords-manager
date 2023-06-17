@@ -16,7 +16,8 @@ function PasswordCard({
 }: {
   password: IPasswordCard
 }) {
-  const { passwords, setPasswords, setIsEditing } = usePasswordContext()
+  const { passwords, setPasswords, isEditing, setIsEditing } =
+    usePasswordContext()
   const [showPassword, setShowPassword] = useState(false)
   const [filteredPassword, setFilteredPassword] = useState(password)
 
@@ -36,10 +37,6 @@ function PasswordCard({
     login: string,
     password: string,
   ) => {
-    const filteredPasswords = passwords.filter((pass) => pass.site !== site)
-    localStorage.setItem('password', JSON.stringify(filteredPasswords))
-    setPasswords(filteredPasswords)
-
     setIsEditing({
       id,
       site,
@@ -55,7 +52,10 @@ function PasswordCard({
   }
 
   return (
-    <div className="transition duration-300 ease-in-out dark:from-red-600 dark:via-red-500 dark:to-red-400 relative bg-gradient-to-r rounded-xl m-2 w-64 h-64 mt-8 flex items-center justify-center from-indigo-500 via-purple-500 to-pink-500">
+    <div
+      className={`${isEditing.id === id && 'animate-changecolors'
+        } bg-400% bg-light-gradient dark:bg-dark-gradient transition duration-300 ease-in-out relative rounded-xl m-2 w-64 h-64 mt-8 flex items-center justify-center`}
+    >
       <div className="font-bold text-white bg-black rounded-lg w-56 h-56 gap-3 flex flex-col text-center">
         <a
           href={site}

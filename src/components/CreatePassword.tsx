@@ -1,5 +1,5 @@
 'use client'
-import { usePasswordContext } from '@/app/context/passwordsContext'
+import { DataType, usePasswordContext } from '@/app/context/passwordsContext'
 import React, { ReactElement, useEffect, useState } from 'react'
 
 function CreatePassword(): ReactElement {
@@ -32,7 +32,16 @@ function CreatePassword(): ReactElement {
 
   const handleSavePassword = () => {
     const getPasswords = JSON.parse(localStorage.getItem('password')) || []
-    getPasswords.push(inputValue)
+
+    if (getPasswords.some((pass: DataType) => pass.id === inputValue.id)) {
+      const oldPassword = getPasswords.filter(
+        ({ id }: { id: string }) => id === inputValue.id,
+      )
+      const index: number = getPasswords.indexOf(oldPassword[0])
+      getPasswords[index] = inputValue
+    } else {
+      getPasswords.unshift(inputValue)
+    }
 
     localStorage.setItem('password', JSON.stringify(getPasswords))
 
