@@ -12,6 +12,7 @@ function CreatePassword(): ReactElement {
   }, [isEditing])
 
   const [inputValue, setInputValue] = useState({
+    id: '',
     login: '',
     password: '',
     site: '',
@@ -37,9 +38,10 @@ function CreatePassword(): ReactElement {
 
     localStorage.setItem('password', JSON.stringify(getPasswords))
 
-    setInputValue({ login: '', password: '', site: '' })
+    setInputValue({ login: '', password: '', site: '', id: '' })
     setPasswords(getPasswords)
     setIsEditing({
+      id: '',
       site: '',
       login: '',
       password: '',
@@ -60,6 +62,19 @@ function CreatePassword(): ReactElement {
         {isEditing.site !== '' ? 'Editar' : 'Cadastrar'}
       </h2>
       <form className="py-2 box-border">
+        <div className="border-b-2 border-slate-200 my-4 mx-8">
+          <label className="dark:text-slate-200 text-slate-500 text-base font-bold">
+            Identificação
+          </label>
+          <input
+            onChange={handleChange}
+            name="id"
+            value={inputValue.id}
+            className="dark:bg-white/20 dark:text-white w-full px-1 h-10 text-base rounded-lg"
+            type="text"
+            required
+          />
+        </div>
         <div className="border-b-2 border-slate-200 my-4 mx-8">
           <label htmlFor='site' className="dark:text-slate-200 text-slate-500 text-base font-bold">
             Site
@@ -87,7 +102,7 @@ function CreatePassword(): ReactElement {
             required
           />
         </div>
-        <div className="border-b-2 border-slate-200 m-8">
+        <div className="border-b-2 border-slate-200 mx-8">
           <label className="dark:text-slate-200 text-slate-500 text-base font-bold">
             Password
           </label>
@@ -101,9 +116,9 @@ function CreatePassword(): ReactElement {
           />
         </div>
         <input
-          disabled={!inputValue.site}
+          disabled={!inputValue.site || !inputValue.id || !inputValue.login || !inputValue.password}
           onClick={handleSavePassword}
-          className="dark:bg-red-600 bg-indigo-500 dark:text-white dark:hover:bg-gradient-to-r dark:hover:from-red-600 dark:hover:via-red-500 dark:hover:to-red-400 dark:hover:text-white w-44 py-2 rounded-xl ml-24 text-white font-bold hover:text-black hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+          className="dark:bg-red-600 bg-indigo-500 dark:text-white dark:hover:bg-gradient-to-r dark:hover:from-red-600 dark:hover:via-red-500 dark:hover:to-red-400 dark:hover:text-white w-44 py-2 rounded-xl ml-24 mt-8 text-white font-bold hover:text-black hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
           type="submit"
           value="Save"
         />

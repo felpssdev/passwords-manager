@@ -2,6 +2,7 @@
 import { createContext, useContext, Dispatch, SetStateAction, useState, ReactNode } from "react"
 
 export type DataType = {
+  id: string;
   site: string;
   login: string;
   password: string;
@@ -18,11 +19,13 @@ const passwordsContext = createContext<ContextProps>({
   passwords: [],
   setPasswords: (): DataType[] => [],
   isEditing: {
+    id: '',
     site: '',
     login: '',
     password: ''
   },
   setIsEditing: (): DataType => ({
+    id: '',
     site: '',
     login: '',
     password: ''
@@ -36,6 +39,7 @@ interface PasswordContextProviderProps {
 export const PasswordContextProvider = ({ children }: PasswordContextProviderProps) => {
   const [passwords, setPasswords] = useState<[] | DataType[]>([])
   const [isEditing, setIsEditing] = useState({
+    id: '',
     site: '',
     login: '',
     password: ''

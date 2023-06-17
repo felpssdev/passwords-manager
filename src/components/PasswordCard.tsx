@@ -3,13 +3,14 @@ import { Pencil, Trash2, Eye, EyeOff } from 'lucide-react'
 import { usePasswordContext } from '@/app/context/passwordsContext'
 
 interface IPasswordCard {
+  id: string;
   site: string
   login: string
   password: string
 }
 
 function PasswordCard({
-  password: { site, login, password },
+  password: { site, login, password, id },
 }: {
   password: IPasswordCard
 }) {
@@ -26,6 +27,7 @@ function PasswordCard({
   }, [showPassword])
 
   const handleEditPassword = (
+    id: string,
     site: string,
     login: string,
     password: string
@@ -35,14 +37,15 @@ function PasswordCard({
     setPasswords(filteredPasswords)
 
     setIsEditing({
+      id: id,
       site: site,
       login: login,
       password: password,
     })
   }
 
-  const handleRemovePassword = (site: string) => {
-    const filteredPasswords = passwords.filter((pass) => pass.site !== site)
+  const handleRemovePassword = (id: string) => {
+    const filteredPasswords = passwords.filter((pass) => pass.id !== id)
     localStorage.setItem('password', JSON.stringify(filteredPasswords))
     setPasswords(filteredPasswords)
   }
@@ -50,8 +53,8 @@ function PasswordCard({
   return (
     <div className="transition duration-300 ease-in-out dark:from-red-600 dark:via-red-500 dark:to-red-400 relative bg-gradient-to-r rounded-xl m-2 w-64 h-64 mt-8 flex items-center justify-center from-indigo-500 via-purple-500 to-pink-500">
       <div className="font-bold text-white bg-black rounded-lg w-56 h-56 gap-3 flex flex-col text-center">
-        <a href={site} target="_blank" className="mt-6">
-          {site}
+        <a href={site} target="_blank" className="mt-6 dark:text-red-400 dark:hover:text-red-600 text-indigo-500 hover:text-pink-500 trasition-all duration-300 ease-in-out">
+          {id}
         </a>
         <p>{login}</p>
         <p>{filteredPassword}</p>
@@ -59,20 +62,20 @@ function PasswordCard({
         <div className="flex absolute top-48 w-32 space-x-6 ml-2 self-center">
           <div>
             <Pencil
-              onClick={() => handleEditPassword(site, login, password)}
+              onClick={() => handleEditPassword(id, site, login, password)}
               className="hover:text-green-500 hover:cursor-pointer"
             />
           </div>
           {showPassword ? (
           <div >
-            <EyeOff
+            <Eye
                 onClick={toggleShowPassword}
                 className="hover:text-blue-500 hover:cursor-pointer"
             />
           </div>
         ) : (
           <div>
-            <Eye
+            <EyeOff
                 onClick={toggleShowPassword}
                 className="hover:text-blue-500 hover:cursor-pointer"
             />
@@ -80,7 +83,7 @@ function PasswordCard({
         )}
           <div>
             <Trash2
-              onClick={() => handleRemovePassword(site)}
+              onClick={() => handleRemovePassword(id)}
               className="hover:text-red-500 hover:cursor-pointer"
             />
           </div>
