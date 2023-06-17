@@ -1,17 +1,24 @@
 'use client'
-import { createContext, useContext, Dispatch, SetStateAction, useState, ReactNode } from "react"
+import {
+  createContext,
+  useContext,
+  Dispatch,
+  SetStateAction,
+  useState,
+  ReactNode,
+} from 'react'
 
 export type DataType = {
-  id: string;
-  site: string;
-  login: string;
-  password: string;
+  id: string
+  site: string
+  login: string
+  password: string
 }
 
 interface ContextProps {
-  passwords: DataType[];
+  passwords: DataType[]
   setPasswords: Dispatch<SetStateAction<DataType[]>>
-  isEditing: DataType;
+  isEditing: DataType
   setIsEditing: Dispatch<SetStateAction<DataType>>
 }
 
@@ -22,13 +29,13 @@ const passwordsContext = createContext<ContextProps>({
     id: '',
     site: '',
     login: '',
-    password: ''
+    password: '',
   },
   setIsEditing: (): DataType => ({
     id: '',
     site: '',
     login: '',
-    password: ''
+    password: '',
   }),
 })
 
@@ -36,17 +43,21 @@ interface PasswordContextProviderProps {
   children: ReactNode
 }
 
-export const PasswordContextProvider = ({ children }: PasswordContextProviderProps) => {
+export const PasswordContextProvider = ({
+  children,
+}: PasswordContextProviderProps) => {
   const [passwords, setPasswords] = useState<[] | DataType[]>([])
   const [isEditing, setIsEditing] = useState({
     id: '',
     site: '',
     login: '',
-    password: ''
+    password: '',
   })
 
   return (
-    <passwordsContext.Provider value={{ passwords, setPasswords, isEditing, setIsEditing }}>
+    <passwordsContext.Provider
+      value={{ passwords, setPasswords, isEditing, setIsEditing }}
+    >
       {children}
     </passwordsContext.Provider>
   )

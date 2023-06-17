@@ -76,11 +76,14 @@ function CreatePassword(): ReactElement {
           />
         </div>
         <div className="border-b-2 border-slate-200 my-4 mx-8">
-          <label htmlFor='site' className="dark:text-slate-200 text-slate-500 text-base font-bold">
+          <label
+            htmlFor="site"
+            className="dark:text-slate-200 text-slate-500 text-base font-bold"
+          >
             Site
           </label>
           <input
-            id='site'
+            id="site"
             onChange={handleChange}
             name="site"
             value={inputValue.site}
@@ -116,7 +119,12 @@ function CreatePassword(): ReactElement {
           />
         </div>
         <input
-          disabled={!inputValue.site || !inputValue.id || !inputValue.login || !inputValue.password}
+          disabled={
+            !inputValue.site ||
+            !inputValue.id ||
+            !inputValue.login ||
+            !inputValue.password
+          }
           onClick={handleSavePassword}
           className="dark:bg-red-600 bg-indigo-500 dark:text-white dark:hover:bg-gradient-to-r dark:hover:from-red-600 dark:hover:via-red-500 dark:hover:to-red-400 dark:hover:text-white w-44 py-2 rounded-xl ml-24 mt-8 text-white font-bold hover:text-black hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
           type="submit"

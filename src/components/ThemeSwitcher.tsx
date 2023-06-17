@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useEffect, useState } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
@@ -13,20 +13,17 @@ function ThemeSwitcher() {
 
   if (!isMounted) return null
 
-  return ( 
+  return (
     <div>
-      {theme === "dark"
-      ? (
-        <div className='absolute right-20 top-14 cursor-pointer'>
-          <Moon className='w-12 h-12' onClick={() => setTheme('light')} />
+      {theme === 'dark' ? (
+        <div className="absolute right-20 top-14 cursor-pointer">
+          <Moon className="w-12 h-12" onClick={() => setTheme('light')} />
         </div>
-      )
-      : (
-        <div className='absolute right-20 top-14 cursor-pointer'>
-          <Sun className='w-12 h-12' onClick={() => setTheme('dark')} />
+      ) : (
+        <div className="absolute right-20 top-14 cursor-pointer">
+          <Sun className="w-12 h-12" onClick={() => setTheme('dark')} />
         </div>
-      )
-      }
+      )}
     </div>
   )
 }
