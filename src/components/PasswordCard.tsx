@@ -48,7 +48,7 @@ function PasswordCard({
   }
 
   return (
-    <div className="relative bg-gradient-to-r rounded-xl m-2 w-64 h-64 flex items-center justify-center from-indigo-500 via-purple-500 to-pink-500">
+    <div className="transition duration-300 ease-in-out dark:from-red-600 dark:via-red-500 dark:to-red-400 relative bg-gradient-to-r rounded-xl m-2 w-64 h-64 mt-8 flex items-center justify-center from-indigo-500 via-purple-500 to-pink-500">
       <div className="font-bold text-white bg-black rounded-lg w-56 h-56 gap-3 flex flex-col text-center">
         <a href={site} target="_blank" className="mt-6">
           {site}

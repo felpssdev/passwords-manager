@@ -1,6 +1,8 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { PasswordContextProvider } from './context/passwordsContext'
+import Providers from './providers'
+import ThemeSwitcher from '@/components/ThemeSwitcher'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,10 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <PasswordContextProvider>
-          {children}
-        </PasswordContextProvider>
+      <body className={`relative ${inter.className}`}>
+        <Providers>
+          <PasswordContextProvider>
+            <ThemeSwitcher />
+            {children}
+          </PasswordContextProvider>
+        </Providers>
       </body>
     </html>
   )

@@ -19,7 +19,7 @@ function Passwords() {
   }, [passwords])
 
   return (
-    <div className="w-9/12 px-6 h-4/5 mt-10 mr-10 scroll-overflow-y-auto text-start bg-white border-4 border-slate-200 rounded-xl py-6 shadow-emerald-400">
+    <div className="dark:shadow-slate-600 dark:shadow-md dark:bg-white/10 dark:border-red-600 w-9/12 px-6 h-4/5 mt-10 mr-10 scroll-overflow-y-auto text-start bg-white border-4 border-slate-200 rounded-xl py-6 shadow-emerald-400 transition duration-300 ease-in-out">
       <h2
         className="
             ml-4
