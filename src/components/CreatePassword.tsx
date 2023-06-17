@@ -33,6 +33,14 @@ function CreatePassword(): ReactElement {
   const handleSavePassword = () => {
     const getPasswords = JSON.parse(localStorage.getItem('password')) || []
 
+    if (inputValue.id !== isEditing.id && isEditing.id !== '') {
+      const editedPassword = getPasswords.filter(
+        (pass: DataType) => pass.id === isEditing.id,
+      )
+      const index: number = getPasswords.indexOf(editedPassword[0])
+      getPasswords.splice(index, 1)
+    }
+
     if (getPasswords.some((pass: DataType) => pass.id === inputValue.id)) {
       const oldPassword = getPasswords.filter(
         ({ id }: { id: string }) => id === inputValue.id,
