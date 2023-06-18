@@ -1,5 +1,6 @@
 'use client'
-import CreatePassword from '@/components/CreatePassword'
+
+import { CreatePassword } from '@/components/CreatePassword'
 import Passwords from '@/components/Passwords'
 import { ReactElement } from 'react'
 

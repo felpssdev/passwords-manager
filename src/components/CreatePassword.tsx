@@ -1,8 +1,8 @@
 'use client'
 import { DataType, usePasswordContext } from '@/app/context/passwordsContext'
-import React, { ReactElement, useEffect, useState } from 'react'
+import React, { memo, ReactElement, useEffect, useState } from 'react'
 
-function CreatePassword(): ReactElement {
+function CreatePasswordComponent(): ReactElement {
   const { setPasswords, isEditing, setIsEditing } = usePasswordContext()
 
   const [inputValue, setInputValue] = useState({
@@ -24,10 +24,7 @@ function CreatePassword(): ReactElement {
   }
 
   const handleChange = ({ target: { name, value } }: { target: ITarget }) => {
-    setInputValue({
-      ...inputValue,
-      [name]: value,
-    })
+    setInputValue({ ...inputValue, [name]: value })
   }
 
   const handleSavePassword = () => {
@@ -150,4 +147,4 @@ function CreatePassword(): ReactElement {
   )
 }
 
-export default CreatePassword
+export const CreatePassword = memo(CreatePasswordComponent)

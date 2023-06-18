@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { usePasswordContext } from '@/app/context/passwordsContext'
-import PasswordCard from './PasswordCard'
+import { PasswordCard } from './PasswordCard'
 
 function Passwords() {
   const [currentPasswords, setCurrentPasswords] = useState([])
@@ -32,8 +32,8 @@ function Passwords() {
       </h2>
       <main className="flex flex-wrap">
         {currentPasswords &&
-          currentPasswords.map((password, i) => (
-            <PasswordCard key={`${password.id}${i}`} password={password} />
+          currentPasswords.map((password) => (
+            <PasswordCard key={password.id} password={password} />
           ))}
       </main>
     </div>

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import { Pencil, Trash2, Eye, EyeOff } from 'lucide-react'
+import React, { memo, useEffect, useState } from 'react'
+import { Pencil, Trash2, Eye, EyeOff, Edit3 } from 'lucide-react'
 import { usePasswordContext } from '@/app/context/passwordsContext'
 
-interface IPasswordCard {
+type PasswordCardProps = {
   id: string
   site: string
   login: string
@@ -11,10 +11,10 @@ interface IPasswordCard {
 
 const charsReg = /[0-9a-zA-Z!@#$%^&*()_+=\-[\]{}|\\:;"'<>,.?/~`]/g
 
-function PasswordCard({
+function PasswordCardComponent({
   password: { site, login, password, id },
 }: {
-  password: IPasswordCard
+  password: PasswordCardProps
 }) {
   const { passwords, setPasswords, isEditing, setIsEditing } =
     usePasswordContext()
@@ -67,14 +67,22 @@ function PasswordCard({
         </a>
         <p>{login}</p>
         <p>{filteredPassword}</p>
-
         <div className="flex absolute top-48 w-32 space-x-6 ml-2 self-center">
-          <div>
-            <Pencil
-              onClick={() => handleEditPassword(id, site, login, password)}
-              className="hover:text-green-500 hover:cursor-pointer"
-            />
-          </div>
+          {isEditing.id === id ? (
+            <div>
+              <Edit3
+                onClick={() => handleEditPassword(id, site, login, password)}
+                className="hover:text-green-500 hover:cursor-pointer"
+              />
+            </div>
+          ) : (
+            <div>
+              <Pencil
+                onClick={() => handleEditPassword(id, site, login, password)}
+                className="hover:text-green-500 hover:cursor-pointer"
+              />
+            </div>
+          )}
           {showPassword ? (
             <div>
               <Eye
@@ -102,4 +110,4 @@ function PasswordCard({
   )
 }
 
-export default PasswordCard
+export const PasswordCard = memo(PasswordCardComponent)
