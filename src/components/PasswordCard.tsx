@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from 'react'
-import { Pencil, Trash2, Eye, EyeOff, Edit3 } from 'lucide-react'
+import { Edit2, Trash2, Eye, EyeOff, Edit3 } from 'lucide-react'
 import { usePasswordContext } from '@/app/context/passwordsContext'
 
 type PasswordCardProps = {
@@ -77,7 +77,7 @@ function PasswordCardComponent({
             </div>
           ) : (
             <div>
-              <Pencil
+              <Edit2
                 onClick={() => handleEditPassword(id, site, login, password)}
                 className="hover:text-green-500 hover:cursor-pointer"
               />
