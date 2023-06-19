@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { memo, useEffect, useState } from 'react'
 import { Edit2, Trash2, Eye, EyeOff, Edit3 } from 'lucide-react'
 import { usePasswordContext } from '@/app/context/passwordsContext'
@@ -54,7 +55,8 @@ function PasswordCardComponent({
 
   return (
     <div
-      className={`${isEditing.id === id && 'animate-changecolors'
+      className={`
+        ${isEditing.id === id && 'animate-changecolors'
         } bg-400% bg-light-gradient dark:bg-dark-gradient transition duration-300 ease-in-out relative rounded-xl m-2 w-1/6 h-60 mt-8 flex items-center justify-center`}
     >
       <div className="font-bold text-white bg-black rounded-lg w-5/6 h-5/6 gap-3 flex flex-col text-center">
