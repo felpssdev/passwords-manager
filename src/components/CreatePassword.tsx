@@ -61,7 +61,7 @@ function CreatePasswordComponent(): ReactElement {
   }
 
   return (
-    <div className="transition duration-300 ease-in-out dark:shadow-slate-600 dark:shadow-md dark:bg-white/10 dark:border-red-600 m-10 w-96 h-fit bg-white border-4 border-slate-200 rounded-xl py-4 shadow-slate-500 flex flex-col items-center">
+    <div className="transition duration-300 ease-in-out dark:shadow-slate-600 dark:shadow-md dark:bg-white/10 dark:border-red-600 mt-10 mx-10 w-1/5 h-fit bg-white border-4 border-slate-200 rounded-xl py-4 shadow-slate-500 flex flex-col items-center">
       <h2
         className="text-center
             pb-3 border-b-2
