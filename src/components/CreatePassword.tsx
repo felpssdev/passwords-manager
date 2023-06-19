@@ -80,8 +80,8 @@ function CreatePasswordComponent(): ReactElement {
       >
         {isEditing.site !== '' ? 'Editar' : 'Cadastrar'}
       </h2>
-      <form className="py-2 box-border">
-        <div className="border-b-2 border-slate-200 my-4 mx-8">
+      <form className="py-2 box-border flex flex-col">
+        <div className="border-b-2 border-slate-200 my-2 mx-8">
           <label className="dark:text-slate-200 text-slate-500 text-base font-bold">
             Identificação
           </label>
@@ -94,7 +94,7 @@ function CreatePasswordComponent(): ReactElement {
             required
           />
         </div>
-        <div className="border-b-2 border-slate-200 my-4 mx-8">
+        <div className="border-b-2 border-slate-200 my-2 mx-8">
           <label
             htmlFor="site"
             className="dark:text-slate-200 text-slate-500 text-base font-bold"
@@ -111,7 +111,7 @@ function CreatePasswordComponent(): ReactElement {
             required
           />
         </div>
-        <div className="border-b-2 border-slate-200 my-4 mx-8">
+        <div className="border-b-2 border-slate-200 my-2 mx-8">
           <label className="dark:text-slate-200 text-slate-500 text-base font-bold">
             Login
           </label>
@@ -124,7 +124,7 @@ function CreatePasswordComponent(): ReactElement {
             required
           />
         </div>
-        <div className="border-b-2 border-slate-200 mx-8">
+        <div className="border-b-2 border-slate-200 my-2 mx-8">
           <label className="dark:text-slate-200 text-slate-500 text-base font-bold">
             Senha
           </label>
@@ -137,18 +137,20 @@ function CreatePasswordComponent(): ReactElement {
             required
           />
         </div>
-        <input
-          disabled={
-            !inputValue.site ||
-            !inputValue.id ||
-            !inputValue.login ||
-            !inputValue.password
-          }
-          onClick={handleSavePassword}
-          className="transition duration-300 ease-in-out dark:bg-red-600 cursor-pointer bg-indigo-400 dark:text-white dark:hover:bg-dark-gradient dark:hover:bg-400% dark:hover:animate-changecolors dark:hover:text-black w-44 py-2 rounded-xl ml-24 mt-8 text-black font-bold hover:text-white hover:bg-light-gradient hover:bg-400% hover:animate-changecolors"
-          type="submit"
-          value="Salvar"
-        />
+        <div className="self-center">
+          <input
+            disabled={
+              !inputValue.site ||
+              !inputValue.id ||
+              !inputValue.login ||
+              !inputValue.password
+            }
+            onClick={handleSavePassword}
+            className="transition duration-300 ease-in-out dark:bg-red-600 cursor-pointer bg-indigo-400 dark:text-white dark:hover:bg-dark-gradient dark:hover:bg-400% dark:hover:animate-changecolors dark:hover:text-black w-44 py-2 rounded-xl mt-8 text-black font-bold hover:text-white hover:bg-light-gradient hover:bg-400% hover:animate-changecolors"
+            type="submit"
+            value="Salvar"
+          />
+        </div>
       </form>
     </div>
   )
