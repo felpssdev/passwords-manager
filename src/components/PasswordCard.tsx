@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import { Edit2, Trash2, Eye, EyeOff, Edit3 } from 'lucide-react'
 import { usePasswordContext } from '@/app/context/passwordsContext'
+import { PASSWORDS_KEY } from './CreatePassword'
 
 type PasswordCardProps = {
   id: string
@@ -47,7 +48,7 @@ function PasswordCardComponent({
 
   const handleRemovePassword = (id: string) => {
     const filteredPasswords = passwords.filter((pass) => pass.id !== id)
-    localStorage.setItem('password', JSON.stringify(filteredPasswords))
+    localStorage.setItem(PASSWORDS_KEY, JSON.stringify(filteredPasswords))
     setPasswords(filteredPasswords)
   }
 

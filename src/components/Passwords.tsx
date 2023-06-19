@@ -1,21 +1,34 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { usePasswordContext } from '@/app/context/passwordsContext'
+import { DataType, usePasswordContext } from '@/app/context/passwordsContext'
 import { PasswordCard } from './PasswordCard'
+import { PASSWORDS_KEY } from './CreatePassword'
 
 function Passwords() {
   const [currentPasswords, setCurrentPasswords] = useState([])
   const { passwords, setPasswords } = usePasswordContext()
 
   useEffect(() => {
-    const getPasswords = JSON.parse(localStorage.getItem('password')) || []
-    setPasswords(getPasswords)
-    setCurrentPasswords(getPasswords)
+    const getPasswords = localStorage.getItem(PASSWORDS_KEY)
+    let parsed = []
+
+    if (typeof getPasswords === 'string') {
+      parsed = JSON.parse(getPasswords)
+    }
+
+    setPasswords(parsed)
+    setCurrentPasswords(parsed)
   }, [])
 
   useEffect(() => {
-    const getPasswords = JSON.parse(localStorage.getItem('password')) || []
-    setCurrentPasswords(getPasswords)
+    const getPasswords = localStorage.getItem(PASSWORDS_KEY)
+    let parsed = []
+
+    if (typeof getPasswords === 'string') {
+      parsed = JSON.parse(getPasswords)
+    }
+
+    setCurrentPasswords(parsed)
   }, [passwords])
 
   return (
@@ -32,7 +45,7 @@ function Passwords() {
       </h2>
       <main className="flex flex-wrap">
         {currentPasswords &&
-          currentPasswords.map((password) => (
+          currentPasswords.map((password: DataType) => (
             <PasswordCard key={password.id} password={password} />
           ))}
       </main>

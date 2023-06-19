@@ -2,6 +2,8 @@
 import { DataType, usePasswordContext } from '@/app/context/passwordsContext'
 import React, { memo, ReactElement, useEffect, useState } from 'react'
 
+export const PASSWORDS_KEY = 'password'
+
 function CreatePasswordComponent(): ReactElement {
   const { setPasswords, isEditing, setIsEditing } = usePasswordContext()
 
@@ -28,30 +30,35 @@ function CreatePasswordComponent(): ReactElement {
   }
 
   const handleSavePassword = () => {
-    const getPasswords = JSON.parse(localStorage.getItem('password')) || []
+    const getPasswords = localStorage.getItem(PASSWORDS_KEY)
+    let parsed = []
+
+    if (typeof getPasswords === 'string') {
+      parsed = JSON.parse(getPasswords)
+    }
 
     if (inputValue.id !== isEditing.id && isEditing.id !== '') {
-      const editedPassword = getPasswords.filter(
+      const editedPassword = parsed.filter(
         (pass: DataType) => pass.id === isEditing.id,
       )
-      const index: number = getPasswords.indexOf(editedPassword[0])
-      getPasswords.splice(index, 1)
+      const index: number = parsed.indexOf(editedPassword[0])
+      parsed.splice(index, 1)
     }
 
-    if (getPasswords.some((pass: DataType) => pass.id === inputValue.id)) {
-      const oldPassword = getPasswords.filter(
+    if (parsed.some((pass: DataType) => pass.id === inputValue.id)) {
+      const oldPassword = parsed.filter(
         ({ id }: { id: string }) => id === inputValue.id,
       )
-      const index: number = getPasswords.indexOf(oldPassword[0])
-      getPasswords[index] = inputValue
+      const index: number = parsed.indexOf(oldPassword[0])
+      parsed[index] = inputValue
     } else {
-      getPasswords.unshift(inputValue)
+      parsed.unshift(inputValue)
     }
 
-    localStorage.setItem('password', JSON.stringify(getPasswords))
+    localStorage.setItem(PASSWORDS_KEY, JSON.stringify(parsed))
 
     setInputValue({ login: '', password: '', site: '', id: '' })
-    setPasswords(getPasswords)
+    setPasswords(parsed)
     setIsEditing({
       id: '',
       site: '',
